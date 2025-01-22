@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BGMI Game Frontend</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.game-container {
+    width: 80%;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.game-header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.game-content {
+    padding: 20px;
+}
+
+.error-message {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.error-message h2 {
+    color: #f00;
+}
+
+.error-message p {
+    color: #666;
+}body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.game-container {
+    width: 80%;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.game-header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.game-content {
+    padding: 20px;
+}
+
+.error-message {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.error-message h2 {
+    color: #f00;
+}
+
+.error-message p {
+    color: #666;
+}
+</style>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>Archery Game</h1>
+        </div>
+        <div class="game-content">
+            <div class="error-message">
+                <h2>Error: Your device is not capable of running this game.</h2>
+                <p>Please check your device's specifications and try again.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>// Check if the device is capable of running the game
+function checkDeviceCapability() {
+    // For demonstration purposes, assume the device is not capable
+    return false;
+}
+
+// Display the error message if the device is not capable
+function displayErrorMessage() {
+    const errorMessage = document.querySelector('.error-message');
+    errorMessage.style.display = 'block';
+}
+
+// Check the device capability and display the error message if necessary
+function init() {
+    if (!checkDeviceCapability()) {
+        displayErrorMessage();
+    }
+}
+
+// Initialize the game frontend
+init();</script>
+</body>
+</html>
