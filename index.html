@@ -27,53 +27,134 @@
         }
 
         /* Navigation Bar */
-        .nav-bar {
-            background-color: #FFFFFF;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 5%;
-            box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.301);
-            position: sticky;
-           
-        }
+      .nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5%;
+  box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.301);
+  position: sticky;
+  z-index: 1000;
+}
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
 
-        .logo img {
-            height: 60px;
-            width: 60px;
-            border-radius: 50%;
-        }
+.logo img {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
 
-        .logo h1 {
-            font-size: 24px;
-            font-weight: bold;
-            color: #100e11de;
-        }
+.logo h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #100e11de;
+}
 
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
 
-        .nav-links a {
-            font-size: 20px;
-            color: #333333;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
+.nav-links a {
+  font-size: 20px;
+  color: #333333;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
 
-        .nav-links a:hover {
-            color:rgba(0, 81, 255, 0.712);
-            font-size: 22px;
-            transform: translateY(-2px);
-        }
+.nav-links a:hover {
+  color: rgba(0, 81, 255, 0.712);
+  font-size: 22px;
+  transform: translateY(-2px);
+}
+
+.nanobar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #333333;
+}
+
+.nanobar-progress {
+  width: 0;
+  height: 100%;
+  background-color: #007BFF;
+  transition: width 0.2s ease;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo {
+    margin-bottom: 1rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+  }
+
+  .nav-links li {
+    margin-bottom: 1rem;
+  }
+
+  .nav-toggle {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #FFFFFF;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: #333333;
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-bar {
+    padding: 0.5rem;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .nav-links {
+    padding: 0.5rem;
+  }
+}
 
         /* Hero Section */
         .hero {
@@ -665,6 +746,23 @@ body {
 
     </style>
     <script>
+// Update the nanobar progress
+function updateNanobar(progress) {
+  const nanobarProgress = document.querySelector('.nanobar-progress');
+  nanobarProgress.style.width = `${progress}%`;
+}
+
+// Example usage:
+updateNanobar(50); // Set the nanobar progress to 50%
+
+// Toggle navigation
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+navToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
         const skillCards = document.querySelectorAll('.skill-card');
 
 skillCards.forEach(card => {
@@ -680,27 +778,33 @@ skillCards.forEach(card => {
 </head>
 <body>
     <nav class="nav-bar">
-        <div class="logo">
-            <img src="web-developer.jpg" alt="Logo">
-            <!-- <h1>Vishal</h1> -->
-            <div class="card">
-                <div class="loader">
-                  <h1>Hi, I'm </h1>
-                  <div class="words">
-                    <span class="word">VISHAL</span>
-                    <span class="word">WEB DEVELOPER</span>
-                  
-                  </div>
-                </div>
-              </div>
+  <div class="logo">
+    <img src="web-developer.jpg" alt="Logo">
+    <div class="card">
+      <div class="loader">
+        <h1>Hi, I'm </h1>
+        <div class="words">
+          <span class="word">VISHAL</span>
+          <span class="word">WEB DEVELOPER</span>
         </div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#projects">projects</a></li>
-            <li><a href="#skills-section">My Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+      </div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#skills-section">My Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nanobar">
+    <div class="nanobar-progress"></div>
+  </div>
+  <button class="nav-toggle" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
 
     <section class="hero">
         <div class="hero-content">
@@ -812,7 +916,7 @@ skillCards.forEach(card => {
             <p><strong>Technologies:</strong> HTML, CSS, JavaScript, API</p>
             <div class="project-links">
                 <!-- <a href="https://github.com/yourusername/project3" target="_blank" class="button">GitHub</a> -->
-                <a href="2nd project.html" target="_blank" class="button">Live Demo</a>
+                <a href="2nd project.html" class="button">Live Demo</a>
             </div>
         </div>
 
